@@ -1,113 +1,115 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>뉴로포탈 2050 - 감각 해킹 테스트</title>
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #00ffee;
-            font-family: "Courier New", Courier, monospace;
-            padding: 2rem;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2rem;
-        }
-        .module {
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background-color: #121212;
-            border: 1px solid #00ffee55;
-            border-radius: 10px;
-            max-width: 600px;
-        }
-        button {
-            margin: 0.5rem;
-            padding: 1rem;
-            font-size: 1rem;
-            background-color: #00ffee;
-            border: none;
-            border-radius: 5px;
-            color: #000;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #00e6d4;
-        }
-        #result, #reset {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>뉴로포탈 2050 - 감각 해킹 테스트</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #00ffee;
+      font-family: "Courier New", Courier, monospace;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    .module {
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background-color: #121212;
+      border: 1px solid #00ffee55;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+    button {
+      margin: 0.5rem;
+      padding: 1rem;
+      font-size: 1rem;
+      background-color: #00ffee;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00e6d4;
+    }
+    #result, #reset {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <audio id="bgm" autoplay loop>
-        <source src="https://raw.githubusercontent.com/me2uuuu/ai_neuroportal/main/final_mystic_neon_bgm_v2%202.mp3" type="audio/mpeg">
-    </audio>
+  <!-- 🎵 최면술 BGM 자동 재생 -->
+  <audio id="bgm" autoplay loop>
+    <source src="https://raw.githubusercontent.com/me2uuuu/ai_neuroportal/main/final_mystic_neon_bgm_v2%202.mp3" type="audio/mpeg">
+  </audio>
 
-    <audio id="whiteNoise">
-        <source src="whitenoise.mp3" type="audio/mpeg">
-    </audio>
+  <!-- 🔊 뇌 캐시 삭제 백색소음 -->
+  <audio id="whiteNoise">
+    <source src="https://raw.githubusercontent.com/me2uuuu/ai_neuroportal/main/whitenoise.mp3" type="audio/mpeg">
+  </audio>
 
-    <h1>뉴로포탈 2050</h1>
-    <p>감각 해킹 테스트에 오신 것을 환영합니다.</p>
+  <h1>뉴로포탈 2050</h1>
+  <p>감각 해킹 테스트에 오신 것을 환영합니다.</p>
 
-    <div id="question1" class="module">
-        <p>Q1. 갑자기 낯선 환경에 떨어진다면, 먼저 반응하는 감각은?</p>
-        <button onclick="next(1, 'vision')">눈으로 주변을 스캔</button>
-        <button onclick="next(1, 'sound')">소리로 방향 감지</button>
-        <button onclick="next(1, 'touch')">촉감으로 상태 파악</button>
-    </div>
+  <div id="question1" class="module">
+    <p>Q1. 갑자기 낯선 환경에 떨어진다면, 먼저 반응하는 감각은?</p>
+    <button onclick="next(1, 'vision')">눈으로 주변을 스캔</button>
+    <button onclick="next(1, 'sound')">소리로 방향 감지</button>
+    <button onclick="next(1, 'touch')">촉감으로 상태 파악</button>
+  </div>
 
-    <div id="question2" class="module" style="display:none;">
-        <p>Q2. 익숙한 장소에 있는 기분은?</p>
-        <button onclick="next(2, 'vision')">공간 구조가 안정적임</button>
-        <button onclick="next(2, 'sound')">익숙한 소리가 편안함</button>
-        <button onclick="next(2, 'intuition')">느낌적으로 안심됨</button>
-    </div>
+  <div id="question2" class="module" style="display:none;">
+    <p>Q2. 익숙한 장소에 있는 기분은?</p>
+    <button onclick="next(2, 'vision')">공간 구조가 안정적임</button>
+    <button onclick="next(2, 'sound')">익숙한 소리가 편안함</button>
+    <button onclick="next(2, 'intuition')">느낌적으로 안심됨</button>
+  </div>
 
-    <div id="result" class="module">
-        <h2>감각 타입 분석 결과</h2>
-        <p id="typeResult"></p>
-        <button onclick="showReset()">🧠 뇌 캐시 삭제 실행</button>
-    </div>
+  <div id="result" class="module">
+    <h2>감각 타입 분석 결과</h2>
+    <p id="typeResult"></p>
+    <button onclick="showReset()">🧠 뇌 캐시 삭제 실행</button>
+  </div>
 
-    <div id="reset" class="module">
-        <h2>리셋 시퀀스 활성화</h2>
-        <p>디지털 피로가 감지되었습니다.<br>당신의 감각을 리튠합니다...</p>
-        <p>✅ 주변의 소리를 잠시 꺼두고, 어두운 곳에서 눈을 감아주세요.<br>3분간 감각을 초기화합니다.</p>
-    </div>
+  <div id="reset" class="module">
+    <h2>리셋 시퀀스 활성화</h2>
+    <p>디지털 피로가 감지되었습니다.<br>당신의 감각을 리튠합니다...</p>
+    <p>✅ 주변의 소리를 잠시 꺼두고, 어두운 곳에서 눈을 감아주세요.<br>3분간 감각을 초기화합니다.</p>
+  </div>
 
-    <script>
-        let score = { vision: 0, sound: 0, touch: 0, intuition: 0 };
+  <script>
+    let score = { vision: 0, sound: 0, touch: 0, intuition: 0 };
 
-        function next(q, type) {
-            score[type]++;
-            document.getElementById('question' + q).style.display = 'none';
-            let nextQ = document.getElementById('question' + (q + 1));
-            if (nextQ) {
-                nextQ.style.display = 'block';
-            } else {
-                showResult();
-            }
-        }
+    function next(q, type) {
+      score[type]++;
+      document.getElementById('question' + q).style.display = 'none';
+      let nextQ = document.getElementById('question' + (q + 1));
+      if (nextQ) {
+        nextQ.style.display = 'block';
+      } else {
+        showResult();
+      }
+    }
 
-        function showResult() {
-            let top = Object.keys(score).reduce((a, b) => score[a] > score[b] ? a : b);
-            let resultText = {
-                vision: "🧿 VISUALIZER - 시각 기반 감각 해커",
-                sound: "🎧 ECHO-TUNED - 청각 중심 분석가",
-                touch: "🤲 SENSORIC - 촉각 민감형",
-                intuition: "🔮 INTUNE - 직관적 감각 해석자"
-            };
-            document.getElementById("typeResult").textContent = resultText[top];
-            document.getElementById("result").style.display = "block";
-        }
+    function showResult() {
+      let top = Object.keys(score).reduce((a, b) => score[a] > score[b] ? a : b);
+      let resultText = {
+        vision: "🧿 VISUALIZER - 시각 기반 감각 해커",
+        sound: "🎧 ECHO-TUNED - 청각 중심 분석가",
+        touch: "🤲 SENSORIC - 촉각 민감형",
+        intuition: "🔮 INTUNE - 직관적 감각 해석자"
+      };
+      document.getElementById("typeResult").textContent = resultText[top];
+      document.getElementById("result").style.display = "block";
+    }
 
-        function showReset() {
-            document.getElementById("reset").style.display = "block";
-            document.getElementById("whiteNoise").play();
-        }
-    </script>
+    function showReset() {
+      document.getElementById("reset").style.display = "block";
+      document.getElementById("whiteNoise").play();
+    }
+  </script>
 </body>
 </html>
