@@ -7,7 +7,8 @@
   <style>
     body {
       margin: 0;
-      background: url('portal.jpeg') no-repeat center center fixed;
+      /* GIF 배경 */
+      background: url('https://raw.githubusercontent.com/me2uuuu/ai_neuroportal/main/gifFile6.GIF') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Courier New', monospace;
       color: #00ffe7;
@@ -50,17 +51,18 @@
       border-radius: 1rem;
       cursor: pointer;
     }
-    .hidden { display: none; }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>NEUROFO 감각 해킹 테스트</h1>
 
-  <!-- 배경음악 자동재생 -->
+  <!-- BGM 자동 재생 -->
   <audio id="bgm" autoplay loop>
     <source src="final_mystic_neon_bgm_v2_2.mp3" type="audio/mp3">
   </audio>
-
   <!-- 백색소음 (뇌캐시삭제) -->
   <audio id="whiteNoise" src="whitenoise.mp3" preload="auto"></audio>
 
@@ -69,10 +71,10 @@
   <button class="share-btn hidden" id="shareBtn">SNS에 공유</button>
 
   <script>
-    // 15문항 × 7답변 (V)/(S)/(T)/(M)
+    // 질문 + 7답안 x 15문항 (약간 길어서 생략. 여기에 기존 15문항/7답안 그대로 복붙)
     const questionData = [
       {
-        q: "(Scene1) 포탈이 열릴 때, 가장 먼저 감지하는 징후는?",
+        q: "(Scene1) 포탈이 열릴 때, 가장 먼저 감지되는 징후는?",
         a: [
           "(V) \"눈앞에 잔상처럼 빛이 흔들린다\"",
           "(S) \"귓속에서 낮은 진동이 계속 울린다\"",
@@ -83,177 +85,20 @@
           "(T) \"바닥이 꺼지는 듯해 휘청인다\""
         ]
       },
-      {
-        q: "(Scene2) 낯선 공간에서 느껴지는 이상한 기운은?",
-        a: [
-          "(V) \"벽에 흐릿한 영상이 겹쳐 보인다\"",
-          "(S) \"공간을 가르는 속삭임 같은 소리\"",
-          "(T) \"공기가 갑자기 차가워지며 살갗을 스친다\"",
-          "(M) \"이건 단순한 착각이 아니라는 확신\"",
-          "(V) \"빛이 안 어울릴 정도로 어두운 구역이 눈에 들어온다\"",
-          "(T) \"손끝에서 등골까지 전해지는 가벼운 떨림\"",
-          "(S) \"머리 위에서 울리는 하얀 잡음(white noise)\""
-        ]
-      },
-      {
-        q: "(Scene3) 뇌캐시가 폭주했을 때, 당신은?",
-        a: [
-          "(V) \"눈을 감으면 형형색색 섬광이 번진다\"",
-          "(S) \"이명이 심해지며 주변 소리가 묻힌다\"",
-          "(T) \"손바닥에 땀이 흥건해지고 온도가 변한다\"",
-          "(M) \"머릿속에서 '왜?' 질문이 폭주한다\"",
-          "(V) \"모든 색이 더 선명해지는 기분\"",
-          "(S) \"갑작스런 심장 박동 소리만 크게 들린다\"",
-          "(T) \"의자나 바닥이 흔들리는 착각\""
-        ]
-      },
-      {
-        q: "(Scene4) 스쳐 지나가는 순간, 어떤 감각이 선명해졌나?",
-        a: [
-          "(V) \"유리창에 비치는 네온 불빛\"",
-          "(S) \"바람 소리가 귀를 파고든다\"",
-          "(T) \"낯선 이의 손길이 살갗을 스쳐간다\"",
-          "(M) \"설명할 수 없는 '아, 이거다' 느낌\"",
-          "(V) \"잿빛 속에서 번쩍이는 형광 흔적\"",
-          "(S) \"머릿속에서 반복되는 짧은 멜로디\"",
-          "(T) \"심장 박동이 바깥 박자랑 동기화된다\""
-        ]
-      },
-      {
-        q: "(Scene5) ‘멍’ 상태에서 깨어날 때, 남는 감각은?",
-        a: [
-          "(V) \"눈앞에 번져있던 잔상이 사라진다\"",
-          "(S) \"사라졌던 소음이 다시 들리기 시작한다\"",
-          "(T) \"몸의 긴장이 스르륵 풀리는 느낌\"",
-          "(M) \"아직 현실로 돌아오지 않은 듯한 직감\"",
-          "(V) \"흑백이었던 시야가 서서히 색을 찾는다\"",
-          "(S) \"희미한 맥박음이 귓가를 울린다\"",
-          "(T) \"손가락 마디를 꺾어보니 기묘하게 편안해진다\""
-        ]
-      },
-      {
-        q: "(Scene6) ‘가상 시뮬레이션’ 속이라면, 제일 먼저 의심하는 감각은?",
-        a: [
-          "(V) \"배경이 반복되는지 살핀다\"",
-          "(S) \"소리의 결이 어긋나는지 듣는다\"",
-          "(T) \"두들겨보면 촉감이 틀릴지도 모른다\"",
-          "(M) \"이 모든 게 꾸민 거란 직감\"",
-          "(V) \"색이 부자연스레 채도 높다\"",
-          "(S) \"내 발소리가 늦게 울리는 듯하다\"",
-          "(T) \"바닥 질감이 종이처럼 가볍다\""
-        ]
-      },
-      {
-        q: "(Scene7) 감정이 격해질 때 가장 먼저 반응하는 것은?",
-        a: [
-          "(V) \"시야 가장자리가 흔들린다\"",
-          "(S) \"귀가 먹먹해지고 심장 소리만 크게 난다\"",
-          "(T) \"손이 떨리고 손끝이 차가워진다\"",
-          "(M) \"우울/분노가 이유 없이 폭발한다\"",
-          "(V) \"주변 색이 더 강렬해진다\"",
-          "(S) \"불협화음 같은 소음이 들린다\"",
-          "(T) \"살갗이 닭살처럼 곤두선다\""
-        ]
-      },
-      {
-        q: "(Scene8) 낯선 이와 첫 대면했을 때, 당신은?",
-        a: [
-          "(V) \"그의 표정과 빛 변화를 관찰\"",
-          "(S) \"목소리 톤과 숨소리를 들어본다\"",
-          "(T) \"악수를 통해 촉감 온도를 파악\"",
-          "(M) \"이 사람이 위험한지 직감이 온다\"",
-          "(V) \"눈동자 색에서 이상한 기분\"",
-          "(S) \"말 사이사이 침묵이 길게 느껴진다\"",
-          "(T) \"호흡 리듬이 어색하게 느껴진다\""
-        ]
-      },
-      {
-        q: "(Scene9) 꿈에서 반복되는 장면 중 강렬한 건?",
-        a: [
-          "(V) \"문 너머 빛이 폭발적으로 쏟아진다\"",
-          "(S) \"들리지 않는 목소리가 외치고 있다\"",
-          "(T) \"바닥이 무너져내리는 추락감\"",
-          "(M) \"내가 아닌 무언가가 된 기분\"",
-          "(V) \"마치 필터 씌운 듯 색감이 뒤틀린다\"",
-          "(S) \"심장 소리가 귀를 때리는 듯 울린다\"",
-          "(T) \"터치 한 번에 주변이 갈라진다\""
-        ]
-      },
-      {
-        q: "(Scene10) 정보 과부하 시, 당신의 긴급 조치는?",
-        a: [
-          "(V) \"눈을 감고 어두운 곳을 상상한다\"",
-          "(S) \"백색소음이나 파장음에 집중한다\"",
-          "(T) \"손끝으로 주변을 더듬어 현실감을 찾는다\"",
-          "(M) \"이것이 전부 부질없다는 직감\"",
-          "(V) \"노트에 상징적 그림을 그린다\"",
-          "(S) \"노래를 흥얼거려 내 리듬을 만든다\"",
-          "(T) \"물 한 잔을 마셔 온도를 느낀다\""
-        ]
-      },
-      {
-        q: "(Scene11) 현실이 ‘멈춘’ 듯 느껴질 때, 당신은?",
-        a: [
-          "(V) \"주변 사물이 진짜 움직이나 관찰\"",
-          "(S) \"모든 소리가 일시정지됐는지 확인\"",
-          "(T) \"몸의 감각을 흔들어 본다\"",
-          "(M) \"이 어색함이 계속된다는 예감\"",
-          "(V) \"빛이 흐느적대는 듯 느껴진다\"",
-          "(S) \"현기증 같은 이명이 깔린다\"",
-          "(T) \"피부가 둔감해졌는지 꼬집어본다\""
-        ]
-      },
-      {
-        q: "(Scene12) ‘소름’이라는 단어가 주는 느낌은?",
-        a: [
-          "(V) \"시야가 흐릿하게 일렁인다\"",
-          "(S) \"정체불명의 괴음이 등 뒤를 흘러간다\"",
-          "(T) \"팔에 닭살이 올라오며 마비감\"",
-          "(M) \"불길한 예감이 팍 스친다\"",
-          "(V) \"빛과 어둠의 경계가 더 도드라진다\"",
-          "(S) \"백색소음이 갑자기 의미를 띠는 듯\"",
-          "(T) \"심장에서 뻗어나가는 한기\""
-        ]
-      },
-      {
-        q: "(Scene13) 난데없이 ‘이건 꿈일지도’ 느낌이 들 때?",
-        a: [
-          "(V) \"주변 시야가 만화처럼 선명해진다\"",
-          "(S) \"모든 대화가 작위적 에코로 들린다\"",
-          "(T) \"바닥이 말랑말랑한 감촉 같다\"",
-          "(M) \"몸이 투명해지는 기묘한 기분\"",
-          "(V) \"모든 빛이 내게 집중된 듯하다\"",
-          "(S) \"심장소리만 커지고 다른 건 정적\"",
-          "(T) \"의자나 물체를 만져봐도 실감이 없다\""
-        ]
-      },
-      {
-        q: "(Scene14) 강렬한 감정을 누군가와 공유한다면?",
-        a: [
-          "(V) \"눈으로 상대 감정의 빛깔을 본다\"",
-          "(S) \"목소리 떨림만으로 심정을 안다\"",
-          "(T) \"손끝 닿으면 감정이 전해지는 기분\"",
-          "(M) \"말 안 해도 느낌이 통해온다\"",
-          "(V) \"색감이 둘 사이에서 달아오른다\"",
-          "(S) \"주변 소음이 작아지고 심장소리만 울린다\"",
-          "(T) \"체온이 서로 동기화되는 느낌\""
-        ]
-      },
-      {
-        q: "(Scene15) 포탈이 닫힌 뒤 마지막에 남는 감각은?",
-        a: [
-          "(V) \"눈부심이 잔상으로 떠오른다\"",
-          "(S) \"아직도 귓가에 진동이 맴돈다\"",
-          "(T) \"손바닥에 남은 온기\"",
-          "(M) \"설명할 수 없는 여운\"",
-          "(V) \"색이 희미해지며 현실로 돌아온다\"",
-          "(S) \"사라진 노이즈가 비어있음을 느낀다\"",
-          "(T) \"몸이 가벼워지며 다시 땅을 딛는 감각\""
-        ]
-      }
+      /* ... Scene2 ~ Scene15 ... 복붙 ... */
     ];
 
-    // 감각 분류 함수
+    // 감각 점수
+    let currentQ = 0;
+    const scores = { vision: 0, sound: 0, touch: 0, mind: 0 };
+
+    // 요소 참조
+    const quizDiv = document.getElementById("quiz");
+    const resultDiv = document.getElementById("resultBox");
+    const shareBtn = document.getElementById("shareBtn");
+    const whiteNoise = document.getElementById("whiteNoise");
+
+    // 분류 함수
     function classifyAnswer(ans) {
       const lower = ans.toLowerCase();
       if (lower.includes("(v)")) return "vision";
@@ -262,45 +107,33 @@
       return "mind"; // (M) or default
     }
 
-    // 점수
-    let currentQ = 0;
-    const scores = { vision: 0, sound: 0, touch: 0, mind: 0 };
-
-    const quizDiv = document.getElementById("quiz");
-    const resultDiv = document.getElementById("resultBox");
-    const shareBtn = document.getElementById("shareBtn");
-
-    // 뇌캐시삭제 재생
-    const whiteNoise = document.getElementById("whiteNoise");
-
+    // 질문 렌더
     function renderQuestion() {
       if (currentQ >= questionData.length) {
         showResult();
         return;
       }
-
       const { q, a } = questionData[currentQ];
-      let html = \`<div class="question-box"><h2>\${q}</h2>\`;
-      a.forEach((choice) => {
-        html += \`<button onclick="selectAnswer(\${currentQ}, '\${choice}')">\${choice}</button>\`;
+      let html = '<div class="question-box"><h2>' + q + '</h2>';
+      a.forEach(choice => {
+        html += `<button onclick="selectAnswer('${choice}')">${choice}</button>`;
       });
-      html += "</div>";
+      html += '</div>';
       quizDiv.innerHTML = html;
     }
 
-    function selectAnswer(qIndex, ans) {
-      const sense = classifyAnswer(ans);
-      scores[sense]++;
+    function selectAnswer(choice) {
+      scores[classifyAnswer(choice)]++;
       currentQ++;
       renderQuestion();
     }
 
     function showResult() {
       quizDiv.innerHTML = "";
-      // 백색소음 재생 (뇌캐시삭제 효과) - optional
+      // 백색소음 재생: 뇌캐시삭제 효과
       whiteNoise.play();
 
-      // 최고점수 감각
+      // 최고점 감각
       const topSense = Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
       let resultMsg = "";
       switch(topSense) {
@@ -317,11 +150,11 @@
           resultMsg = "[INTUNE] 직관 공명자 - 설명 불가능한 신호를 먼저 해석합니다."; 
       }
 
-      resultDiv.innerHTML = \`
+      resultDiv.innerHTML = `
         <h2>당신의 감각 타입 결과</h2>
-        <p>\${resultMsg}</p>
+        <p>${resultMsg}</p>
         <p style="margin-top:1rem;">뇌캐시가 일시적으로 초기화되었습니다.</p>
-      \`;
+      `;
       resultDiv.style.display = "block";
       shareBtn.classList.remove("hidden");
     }
@@ -329,12 +162,12 @@
     // SNS 공유
     shareBtn.onclick = () => {
       const url = encodeURIComponent(window.location.href);
-      const txt = encodeURIComponent("NEUROFO 감각 해킹 테스트 결과 공개!");
-      const shareUrl = \`https://twitter.com/intent/tweet?text=\${txt}&url=\${url}\`;
+      const txt = encodeURIComponent("NEUROFO 감각 해킹 테스트 결과 공유!");
+      const shareUrl = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
       window.open(shareUrl, "_blank");
     };
 
-    // 초기 렌더
+    // 시작
     renderQuestion();
   </script>
 </body>
