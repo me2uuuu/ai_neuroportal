@@ -3,172 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <title>NEUROFO 감각 해킹 테스트</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <style>
-    body {
-      margin: 0;
-      /* GIF 배경 */
-      background: url('https://raw.githubusercontent.com/me2uuuu/ai_neuroportal/main/gifFile6.GIF') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Courier New', monospace;
-      color: #00ffe7;
-      text-align: center;
-      padding: 2rem;
-    }
-    .question-box {
-      margin: 1rem auto;
-      padding: 1rem;
-      background: rgba(0,0,0,0.7);
-      border-radius: 1rem;
-      max-width: 700px;
-    }
-    button {
-      display: inline-block;
-      margin: 0.4rem;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 1rem;
-      background: #00ffe7;
-      color: #000;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .result {
-      margin: 2rem auto;
-      padding: 1.5rem;
-      background: rgba(0,0,0,0.8);
-      border: 2px dashed #00ffe7;
-      border-radius: 1rem;
-      max-width: 700px;
-      display: none;
-    }
-    .share-btn {
-      margin-top: 1rem;
-      background: transparent;
-      color: #00ffe7;
-      border: 1px solid #00ffe7;
-      padding: 0.6rem 1.2rem;
-      border-radius: 1rem;
-      cursor: pointer;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>NEUROFO 감각 해킹 테스트</h1>
+  <h1>NEUROFO : 감각 해킹 포탈 접속 중...</h1>
 
-  <!-- BGM 자동 재생 -->
+  <!-- 배경 음악 -->
   <audio id="bgm" autoplay loop>
-    <source src="final_mystic_neon_bgm_v2_2.mp3" type="audio/mp3">
+    <source src="final_mystic_neon_bgm_v2_2.mp3" type="audio/mp3" />
   </audio>
-  <!-- 백색소음 (뇌캐시삭제) -->
+
+  <!-- 백색소음 (뇌 캐시 삭제) -->
   <audio id="whiteNoise" src="whitenoise.mp3" preload="auto"></audio>
 
+  <!-- 퀴즈 -->
   <div id="quiz"></div>
-  <div class="result" id="resultBox"></div>
-  <button class="share-btn hidden" id="shareBtn">SNS에 공유</button>
 
-  <script>
-    // 질문 + 7답안 x 15문항 (약간 길어서 생략. 여기에 기존 15문항/7답안 그대로 복붙)
-    const questionData = [
-      {
-        q: "(Scene1) 포탈이 열릴 때, 가장 먼저 감지되는 징후는?",
-        a: [
-          "(V) \"눈앞에 잔상처럼 빛이 흔들린다\"",
-          "(S) \"귓속에서 낮은 진동이 계속 울린다\"",
-          "(T) \"팔에 오싹한 전류가 흐른다\"",
-          "(M) \"알 수 없는 느낌이 든다\"",
-          "(V) \"형광색 불빛이 번쩍인다\"",
-          "(S) \"심장 소리와 어긋나는 리듬이 들린다\"",
-          "(T) \"바닥이 꺼지는 듯해 휘청인다\""
-        ]
-      },
-      /* ... Scene2 ~ Scene15 ... 복붙 ... */
-    ];
+  <!-- 결과 카드 -->
+  <div class="result hidden" id="resultBox"></div>
+  <button class="share-btn hidden" id="shareBtn">🔗 결과 공유하기</button>
 
-    // 감각 점수
-    let currentQ = 0;
-    const scores = { vision: 0, sound: 0, touch: 0, mind: 0 };
-
-    // 요소 참조
-    const quizDiv = document.getElementById("quiz");
-    const resultDiv = document.getElementById("resultBox");
-    const shareBtn = document.getElementById("shareBtn");
-    const whiteNoise = document.getElementById("whiteNoise");
-
-    // 분류 함수
-    function classifyAnswer(ans) {
-      const lower = ans.toLowerCase();
-      if (lower.includes("(v)")) return "vision";
-      if (lower.includes("(s)")) return "sound";
-      if (lower.includes("(t)")) return "touch";
-      return "mind"; // (M) or default
-    }
-
-    // 질문 렌더
-    function renderQuestion() {
-      if (currentQ >= questionData.length) {
-        showResult();
-        return;
-      }
-      const { q, a } = questionData[currentQ];
-      let html = '<div class="question-box"><h2>' + q + '</h2>';
-      a.forEach(choice => {
-        html += `<button onclick="selectAnswer('${choice}')">${choice}</button>`;
-      });
-      html += '</div>';
-      quizDiv.innerHTML = html;
-    }
-
-    function selectAnswer(choice) {
-      scores[classifyAnswer(choice)]++;
-      currentQ++;
-      renderQuestion();
-    }
-
-    function showResult() {
-      quizDiv.innerHTML = "";
-      // 백색소음 재생: 뇌캐시삭제 효과
-      whiteNoise.play();
-
-      // 최고점 감각
-      const topSense = Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
-      let resultMsg = "";
-      switch(topSense) {
-        case "vision": 
-          resultMsg = "[VISUALIZER] 시각 파장 해석자 - 빛과 색으로 정보를 읽습니다."; 
-          break;
-        case "sound": 
-          resultMsg = "[SOUNDDRIFTER] 음파 분석자 - 소리와 진동에서 진실을 찾습니다."; 
-          break;
-        case "touch": 
-          resultMsg = "[TACTILE SEEKER] 촉각의 문지방을 넘나드는 감각 해커."; 
-          break;
-        default: 
-          resultMsg = "[INTUNE] 직관 공명자 - 설명 불가능한 신호를 먼저 해석합니다."; 
-      }
-
-      resultDiv.innerHTML = `
-        <h2>당신의 감각 타입 결과</h2>
-        <p>${resultMsg}</p>
-        <p style="margin-top:1rem;">뇌캐시가 일시적으로 초기화되었습니다.</p>
-      `;
-      resultDiv.style.display = "block";
-      shareBtn.classList.remove("hidden");
-    }
-
-    // SNS 공유
-    shareBtn.onclick = () => {
-      const url = encodeURIComponent(window.location.href);
-      const txt = encodeURIComponent("NEUROFO 감각 해킹 테스트 결과 공유!");
-      const shareUrl = `https://twitter.com/intent/tweet?text=${txt}&url=${url}`;
-      window.open(shareUrl, "_blank");
-    };
-
-    // 시작
-    renderQuestion();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
