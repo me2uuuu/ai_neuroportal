@@ -2,28 +2,101 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>NEUROFO 감각 해킹 테스트</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <title>NEUROFO : 감각 해킹 포탈</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    #loading-screen {
+      font-size: 20px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    #card-container {
+      display: none;
+      text-align: center;
+    }
+
+    .card-image {
+      width: 300px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      animation: glow 1.8s infinite alternate;
+    }
+
+    .card-description {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: none;
+      border: 1px solid white;
+      color: white;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 8px 20px;
+      margin: 6px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 5px #0ff); }
+      to { filter: drop-shadow(0 0 15px #0ff); }
+    }
+  </style>
 </head>
 <body>
-  <h1>NEUROFO : 감각 해킹 포탈 접속 중...</h1>
+  <!-- 포탈 접속 중 화면 -->
+  <div id="loading-screen">
+    <h2>NEUROFO : 감각 해킹 포탈 접속 중...</h2>
+    <p>🔗 결과 공유하기</p>
+  </div>
 
-  <!-- 배경 음악 -->
-  <audio id="bgm" autoplay loop>
-    <source src="final_mystic_neon_bgm_v2_2.mp3" type="audio/mp3" />
-  </audio>
+  <!-- 카드 출력 화면 -->
+  <div id="card-container">
+    <img src="card_visualizer.png" alt="VISUALIZER 카드" class="card-image" />
+    <p class="card-description">
+      너는 <strong>VISUALIZER</strong><br />
+      시각 패턴을 해독하는 공명자.<br />
+      빛과 왜곡된 현실의 틈 사이에서 진실을 찾는다.
+    </p>
+    <button onclick="shareResult()">🔗 결과 공유하기</button>
+    <button onclick="restartTest()">🔄 다시하기</button>
+  </div>
 
-  <!-- 백색소음 (뇌 캐시 삭제) -->
-  <audio id="whiteNoise" src="whitenoise.mp3" preload="auto"></audio>
+  <script>
+    // 2초 후 결과 카드 출력
+    setTimeout(() => {
+      document.getElementById("loading-screen").style.display = "none";
+      document.getElementById("card-container").style.display = "block";
+    }, 2000);
 
-  <!-- 퀴즈 -->
-  <div id="quiz"></div>
+    function shareResult() {
+      alert("공유 링크가 복사되었습니다!\n(기능은 아직 연결 안됨)");
+    }
 
-  <!-- 결과 카드 -->
-  <div class="result hidden" id="resultBox"></div>
-  <button class="share-btn hidden" id="shareBtn">🔗 결과 공유하기</button>
-
-  <script src="script.js"></script>
+    function restartTest() {
+      location.reload();
+    }
+  </script>
 </body>
 </html>
