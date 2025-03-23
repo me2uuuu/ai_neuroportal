@@ -26,7 +26,11 @@
       margin: 0.25rem;
       cursor: pointer;
     }
-    button:hover {
+    button.selected {
+      background: #00ffe7;
+      color: #0c0e12;
+    }
+    button:hover:not(.selected) {
       background: #00ffe7;
       color: #0c0e12;
     }
@@ -85,14 +89,15 @@
       optionLabels.forEach(opt => {
         const btn = document.createElement('button');
         btn.textContent = opt.text;
-        btn.onclick = () => {
-          if (!btn.disabled) {
-            scores[opt.type]++;
+        btn.addEventListener('click', () => {
+          if (!btn.classList.contains('selected')) {
             const buttons = div.querySelectorAll('button');
             buttons.forEach(b => b.disabled = true);
+            btn.classList.add('selected');
+            scores[opt.type]++;
             console.log(`선택됨: ${opt.type}`);
           }
-        };
+        });
         div.appendChild(btn);
       });
 
