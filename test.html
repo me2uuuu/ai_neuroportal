@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>감각 테스트</title>
+  <title>NEUROFO 감각 테스트</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
@@ -43,26 +43,49 @@
   <button class="submit" onclick="submitTest()">결과 확인하기</button>
 
   <script>
-    const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition'];
-    const scores = { intune: 0, sounddrifter: 0, tactile: 0, visualizer: 0, synthvibe: 0, sensehacker: 0, intuition: 0 };
+    const questions = [
+      { text: '당신은 낯선 도시의 거리에 떨어졌습니다. 가장 먼저 의지할 감각은?' },
+      { text: '깊은 밤, 아무도 없는 골목. 당신을 안심시키는 것은?' },
+      { text: '감정을 잃는 대신 무엇을 얻고 싶은가?' },
+      { text: '지금 떠오르는 첫 장면은 어떤 감각에 가까운가?' },
+      { text: '당신의 꿈에서 반복되는 감각은?' },
+      { text: '한없이 빠져들고 싶은 감각의 형태는?' },
+      { text: '디지털 세계에 접속할 수 있다면, 당신의 키는?' },
+      { text: '현실과 가상 사이, 당신의 중심은?' },
+      { text: '가장 오래 남는 기억은?' },
+      { text: '지우고 싶은 감각의 흔적은?' },
+      { text: '빛보다 빠른 데이터는 어떤 감각을 통과하는가?' },
+      { text: '감정의 파동이 가장 클 때, 당신은?' },
+      { text: '무의식 중 반응하는 감각은?' },
+      { text: '하나의 감각만 남길 수 있다면?' },
+      { text: '그 모든 감각을 초월했을 때, 남는 것은?' }
+    ];
 
-    const questions = Array.from({ length: 15 }, (_, i) => `Q${i + 1}`);
+    const options = [
+      { text: '주변의 소리', type: 'sounddrifter' },
+      { text: '빛과 색의 움직임', type: 'visualizer' },
+      { text: '공기의 흐름과 온도', type: 'tactile' },
+      { text: '몸의 직감', type: 'intuition' },
+      { text: '데이터 흐름 읽기', type: 'synthvibe' },
+      { text: '감정 공명', type: 'sensehacker' },
+      { text: '직관적 방향감', type: 'intune' }
+    ];
 
+    const scores = {};
     const container = document.getElementById('test-container');
 
     questions.forEach((q, index) => {
       const div = document.createElement('div');
       div.classList.add('question');
-      div.innerHTML = `<h2>${q}</h2>`;
+      div.innerHTML = `<h2>Q${index + 1}. ${q.text}</h2>`;
 
-      senses.forEach((sense, i) => {
+      options.forEach((a, i) => {
         const btn = document.createElement('button');
-        btn.innerText = `선택지 ${i + 1}`;
+        btn.textContent = a.text;
         btn.onclick = () => {
-          // 중복 선택 방지
           const buttons = div.querySelectorAll('button');
           buttons.forEach(b => b.disabled = true);
-          scores[sense]++;
+          scores[a.type] = (scores[a.type] || 0) + 1;
         };
         div.appendChild(btn);
       });
@@ -82,7 +105,7 @@
         sensehacker: 'sensehacker.html',
         intuition: 'intuition_engine.html'
       };
-      window.location.href = mapping[topSense];
+      window.location.href = mapping[topSense] || 'intune.html';
     }
   </script>
 </body>
