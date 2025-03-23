@@ -47,7 +47,7 @@
   <button class="submit" onclick="submitTest()">결과 확인하기</button>
 
   <script>
-    const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition', 'phantom'];
+    const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition', 'phantom', 'glitched'];
     const scores = {};
     senses.forEach(s => scores[s] = 0);
 
@@ -66,7 +66,10 @@
       '당신이 마지막으로 느낀 감각은?',
       '신호 없는 영역에서 스스로 반응한 감각은?',
       '의미 없는 패턴에서 의미를 찾는다면?',
-      '끝없이 반복되는 세계에서 당신을 이끄는 감각은?'
+      '끝없이 반복되는 세계에서 당신을 이끄는 감각은?',
+      '감각의 경계가 무너졌을 때, 당신은 무엇을 붙잡는가?',
+      '누군가의 신호가 당신과 공명할 때, 어떤 느낌이 먼저 오는가?',
+      '세계가 순간 정지한 것처럼 느껴졌을 때, 당신은 어디에 존재하는가?'
     ];
 
     const optionLabels = [
@@ -76,7 +79,8 @@
       { text: '몸의 직감', type: 'intuition' },
       { text: '데이터 흐름 읽기', type: 'synthvibe' },
       { text: '감정 공명', type: 'sensehacker' },
-      { text: '직관적 방향감', type: 'intune' }
+      { text: '직관적 방향감', type: 'intune' },
+      { text: '신호 오류 감지', type: 'glitched' }
     ];
 
     const container = document.getElementById('test-container');
@@ -115,7 +119,8 @@
         synthvibe: 'synthvibe.html',
         sensehacker: 'sensehacker.html',
         intuition: 'intuition_engine.html',
-        phantom: 'audiophantom.html'
+        phantom: 'audiophantom.html',
+        glitched: 'glitched.html'
       };
       window.location.href = mapping[topSense] || 'intune.html';
     }
