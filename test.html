@@ -1,202 +1,89 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEUROFO | 감각 해킹 테스트</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>감각 테스트</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
     body {
-      margin: 0;
       font-family: 'Share Tech Mono', monospace;
       background-color: #0c0e12;
       color: #d6faff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       padding: 2rem;
     }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #00ffe7;
-      text-shadow: 0 0 12px #00ffe7;
-    }
-
-    .question-container {
-      max-width: 600px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border: 1px solid #00ffe7;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.25), 0 0 20px rgba(130, 110, 255, 0.3);
-      backdrop-filter: blur(6px);
-    }
-
     .question {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
-
-    .options button {
-      display: block;
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 0.75rem;
-      font-size: 1rem;
+    h2 {
+      color: #00ffe7;
+    }
+    button {
       background: transparent;
-      border: 2px solid #00fff0;
-      color: #00fff0;
-      border-radius: 8px;
+      color: #00ffe7;
+      border: 1px solid #00ffe7;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
       cursor: pointer;
-      transition: 0.3s;
     }
-
-    .options button:hover {
-      background-color: #00fff0;
+    button:hover {
+      background: #00ffe7;
       color: #0c0e12;
+    }
+    .submit {
+      margin-top: 3rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
     }
   </style>
 </head>
 <body>
-  <div class="question-container">
-    <h1>NEUROFO</h1>
-    <div id="question-box">
-      <div class="question" id="question"></div>
-      <div class="options" id="options"></div>
-    </div>
-  </div>
+  <h1>NEUROFO 감각 테스트</h1>
+  <div id="test-container"></div>
+  <button class="submit" onclick="submitTest()">결과 확인하기</button>
 
   <script>
-    const questions = [
-      {
-        text: '당신은 낯선 도시의 거리에 떨어졌습니다. 가장 먼저 의지할 감각은?',
-        answers: [
-          { text: '주변의 소리', type: 'sounddrifter' },
-          { text: '빛과 색의 움직임', type: 'visualizer' },
-          { text: '공기의 흐름과 온도', type: 'tactile' },
-          { text: '몸의 직감', type: 'intuition_engine' }
-        ]
-      },
-      {
-        text: '깊은 밤, 아무도 없는 골목. 당신을 안심시키는 것은?',
-        answers: [
-          { text: '머릿속에 흐르는 음악', type: 'sounddrifter' },
-          { text: '빛나는 간판의 리듬감', type: 'synthvibe' },
-          { text: '익숙한 냄새', type: 'phantom' },
-          { text: '감정의 흔적을 느끼는 감각', type: 'sensehacker' }
-        ]
-      },
-      {
-        text: '당신은 오랫동안 사용하지 않던 감각을 다시 찾았습니다. 그것은?',
-        answers: [
-          { text: '잠재된 직관', type: 'intuition_engine' },
-          { text: '손끝의 감각', type: 'tactile' },
-          { text: '들리지 않던 주파수', type: 'sounddrifter' },
-          { text: '이상한 패턴이 보이는 시각', type: 'visualizer' }
-        ]
-      },
-      {
-        text: '새로운 세계에 접속하려면?',
-        answers: [
-          { text: '빛의 파장을 해독한다', type: 'visualizer' },
-          { text: '리듬을 타고 진입한다', type: 'synthvibe' },
-          { text: '촉감으로 경로를 탐색한다', type: 'tactile' },
-          { text: '감정을 해킹한다', type: 'sensehacker' }
-        ]
-      },
-      {
-        text: '당신에게 가장 친숙한 공간은?',
-        answers: [
-          { text: '소리가 울리는 빈방', type: 'sounddrifter' },
-          { text: '빛이 반사되는 네온 거리', type: 'visualizer' },
-          { text: '기계음이 가득한 지하', type: 'synthvibe' },
-          { text: '무채색의 깊은 물속', type: 'intuition_engine' }
-        ]
-      },
-      {
-        text: '감각을 차단해야 한다면 무엇을 마지막까지 남길 것인가?',
-        answers: [
-          { text: '청각', type: 'sounddrifter' },
-          { text: '시각', type: 'visualizer' },
-          { text: '촉각', type: 'tactile' },
-          { text: '직감', type: 'intuition_engine' }
-        ]
-      },
-      {
-        text: '빛보다 빠른 것은 무엇인가?',
-        answers: [
-          { text: '사운드의 울림', type: 'sounddrifter' },
-          { text: '감각의 번뜩임', type: 'intuition_engine' },
-          { text: '데이터의 흐름', type: 'synthvibe' },
-          { text: '심장의 떨림', type: 'sensehacker' }
-        ]
-      },
-      {
-        text: '미지의 존재와 교신할 수 있다면, 당신은 어떻게 할 것인가?',
-        answers: [
-          { text: '공명하는 주파수를 맞춘다', type: 'synthvibe' },
-          { text: '빛의 코드로 메시지를 보낸다', type: 'visualizer' },
-          { text: '마음을 열어 직관적으로 이해한다', type: 'intuition_engine' },
-          { text: '감정을 읽고 해석한다', type: 'sensehacker' }
-        ]
-      },
-      {
-        text: '기억에 가장 강하게 남는 감각은?',
-        answers: [
-          { text: '들었던 멜로디', type: 'sounddrifter' },
-          { text: '빛의 형태', type: 'visualizer' },
-          { text: '피부로 느낀 감촉', type: 'tactile' },
-          { text: '당시의 감정', type: 'sensehacker' }
-        ]
-      },
-      {
-        text: '당신이 이끄는 감각의 길 끝에는?',
-        answers: [
-          { text: '음의 파동이 흐르는 신경망', type: 'sounddrifter' },
-          { text: '미지의 빛으로 열린 포탈', type: 'visualizer' },
-          { text: '촉각으로 생성된 입체 공간', type: 'tactile' },
-          { text: '감정을 넘어선 직관의 코어', type: 'intuition_engine' }
-        ]
-      }
-    ];
+    const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition'];
+    const scores = { intune: 0, sounddrifter: 0, tactile: 0, visualizer: 0, synthvibe: 0, sensehacker: 0, intuition: 0 };
 
-    let currentQuestion = 0;
-    let scores = {};
+    const questions = Array.from({ length: 15 }, (_, i) => `Q${i + 1}`);
 
-    const questionEl = document.getElementById('question');
-    const optionsEl = document.getElementById('options');
+    const container = document.getElementById('test-container');
 
-    function showQuestion() {
-      const q = questions[currentQuestion];
-      questionEl.textContent = q.text;
-      optionsEl.innerHTML = '';
-      q.answers.forEach(answer => {
+    questions.forEach((q, index) => {
+      const div = document.createElement('div');
+      div.classList.add('question');
+      div.innerHTML = `<h2>${q}</h2>`;
+
+      senses.forEach((sense, i) => {
         const btn = document.createElement('button');
-        btn.textContent = answer.text;
+        btn.innerText = `선택지 ${i + 1}`;
         btn.onclick = () => {
-          scores[answer.type] = (scores[answer.type] || 0) + 1;
-          currentQuestion++;
-          if (currentQuestion < questions.length) {
-            showQuestion();
-          } else {
-            showResult();
-          }
+          // 중복 선택 방지
+          const buttons = div.querySelectorAll('button');
+          buttons.forEach(b => b.disabled = true);
+          scores[sense]++;
         };
-        optionsEl.appendChild(btn);
+        div.appendChild(btn);
       });
-    }
 
-    function showResult() {
-      const topType = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-      location.href = topType + '.html';
-    }
+      container.appendChild(div);
+    });
 
-    showQuestion();
+    function submitTest() {
+      const max = Math.max(...Object.values(scores));
+      const topSense = Object.keys(scores).find(key => scores[key] === max);
+      const mapping = {
+        intune: 'intune.html',
+        sounddrifter: 'sounddrifter.html',
+        tactile: 'audiophantom.html',
+        visualizer: 'visualizer.html',
+        synthvibe: 'synthvibe.html',
+        sensehacker: 'sensehacker.html',
+        intuition: 'intuition_engine.html'
+      };
+      window.location.href = mapping[topSense];
+    }
   </script>
 </body>
 </html>
