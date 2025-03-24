@@ -1,73 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEUROFO | GLITCHED</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEUROFO 카드 - GLITCHED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #0c0e12;
-      color: #d6faff;
+      margin: 0;
+      padding: 0;
       font-family: 'Share Tech Mono', monospace;
+      background: url('bg/glitched.jpg') center/cover no-repeat;
+      background-color: #0c0e12;
+      color: #ff00cc;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
     }
-
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid #ff00cc;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 600px;
+      box-shadow: 0 0 30px rgba(255, 0, 204, 0.3);
+      animation: floatCard 3s ease-in-out infinite;
+    }
     h1 {
       font-size: 2.5rem;
+      margin-bottom: 1rem;
       color: #ff00cc;
-      text-shadow: 0 0 10px #ff00cc;
     }
-
     p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
-
-    .share-buttons {
+    .share {
       margin-top: 2rem;
     }
-
     .share-btn {
-      display: inline-block;
-      margin: 0.3rem;
-      padding: 0.6rem 1.2rem;
-      background-color: #00ffe7;
+      background-color: #ff00cc;
       color: #0c0e12;
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      border-radius: 6px;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
       transition: all 0.3s ease;
+      display: inline-block;
     }
-
     .share-btn:hover {
-      background-color: #6acaff;
+      background-color: #ff66d9;
+    }
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <h1>GLITCHED</h1>
-  <p>신호의 틈에서 태어난 너는,<br>
-  감각의 잔상과 오류를 해석하는 자.</p>
-
-  <div class="share-buttons">
-    <a id="shareTwitter" class="share-btn" target="_blank">Twitter</a>
-    <a id="shareInstagram" class="share-btn" target="_blank">Instagram</a>
-    <a id="shareThreads" class="share-btn" target="_blank">Threads</a>
+  <div class="card">
+    <h1>GLITCHED</h1>
+    <p>신호의 틈에서 태어난 너는,<br>
+    감각의 잔상과 오류를 해석하는 자.</p>
+    <div class="share">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=나는 GLITCHED 감각 카드 결과를 얻었다!&url=https://neurofo.netlify.app">Twitter</a>
+      <a class="share-btn" href="https://www.instagram.com/">Instagram</a>
+      <a class="share-btn" href="https://www.threads.net/">Threads</a>
+    </div>
   </div>
-
-  <script>
-    const url = window.location.href;
-    const params = new URLSearchParams(window.location.search);
-    const type = params.get("type") || 'glitched';
-    const message = `나는 ${type.toUpperCase()} 감각을 선택했습니다. #NEUROFO #감각테스트`;
-
-    document.getElementById("shareTwitter").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`;
-    document.getElementById("shareInstagram").href = `https://www.instagram.com/?url=${encodeURIComponent(url)}`;
-    document.getElementById("shareThreads").href = `https://www.threads.net/intent/post?text=${encodeURIComponent(message + ' ' + url)}`;
-  </script>
 </body>
 </html>
