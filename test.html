@@ -66,7 +66,9 @@
   </style>
 </head>
 <body>
-  <audio id="bgm" autoplay loop>
+
+  <!-- 배경 음악 -->
+  <audio id="bgm" loop>
     <source src="final_mystic_neon_bgm_v2_2.mp3" type="audio/mpeg">
   </audio>
 
@@ -74,6 +76,7 @@
   <div id="test-container"></div>
   <button class="submit" onclick="submitTest()">결과 확인하기</button>
 
+  <!-- 공유 버튼 -->
   <div style="text-align: center; margin-top: 3rem;">
     <p style="margin-bottom: 0.5rem;">🔗 친구에게 공유하기</p>
     <a class="share-btn" href="https://twitter.com/intent/tweet?text=나는+NEUROFO에서+감각+타입을+발견했어요!+%F0%9F%94%9D+%23NEUROFO+%23감각해킹테스트&url=https://neurofo.netlify.app" target="_blank">X (트위터)</a>
@@ -82,6 +85,7 @@
     <a class="share-btn" href="https://www.threads.net/" target="_blank">Threads</a>
   </div>
 
+  <!-- 스크립트 시작 -->
   <script>
     const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition', 'phantom', 'glitched'];
     const scores = {};
@@ -131,36 +135,4 @@
         btn.textContent = opt.text;
         btn.addEventListener('click', () => {
           if (!btn.classList.contains('selected')) {
-            const buttons = div.querySelectorAll('button');
-            buttons.forEach(b => b.disabled = true);
-            btn.classList.add('selected');
-            scores[opt.type]++;
-          }
-        });
-        div.appendChild(btn);
-      });
-
-      container.appendChild(div);
-    });
-
-    function submitTest() {
-      const max = Math.max(...Object.values(scores));
-      const topSense = Object.keys(scores).find(key => scores[key] === max);
-      const mapping = {
-        intune: 'intune.html',
-        sounddrifter: 'sounddrifter.html',
-        tactile: 'audiophantom.html',
-        visualizer: 'visualizer.html',
-        synthvibe: 'synthvibe.html',
-        sensehacker: 'sensehacker.html',
-        intuition: 'intuition_engine.html',
-        phantom: 'audiophantom.html',
-        glitched: 'glitched.html'
-      };
-
-      const resultPage = mapping[topSense] || 'intune.html';
-      window.location.href = resultPage;
-    }
-  </script>
-</body>
-</html>
+            const buttons =
