@@ -1,92 +1,50 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SYNTHVIBE | 감각 카드</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEUROFO 카드 - SYNTHVIBE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(145deg, #0c0e12, #1b1d22);
       font-family: 'Share Tech Mono', monospace;
-      color: #ffffff;
+      background: url('bg/synthvibe.jpg') center/cover no-repeat;
+      background-color: #0c0e12;
+      color: #d6faff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
     }
-
-    .container {
-      background: rgba(0, 0, 0, 0.5);
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
       border: 1px solid #00ffe7;
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.25), 0 0 20px rgba(130, 110, 255, 0.3);
       max-width: 600px;
-      backdrop-filter: blur(6px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: floatCard 3s ease-in-out infinite;
     }
-
     h1 {
       font-size: 2.5rem;
-      color: #00ffe7;
       margin-bottom: 1rem;
-      text-shadow: 0 0 12px #00ffe7;
+      color: #00ffe7;
     }
-
-    h2 {
-      font-size: 1.2rem;
-      color: #83e9f0;
-      margin-top: 0;
-      margin-bottom: 2rem;
-    }
-
     p {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: #e0f8ff;
-      margin-bottom: 1rem;
     }
-
-    .tag {
-      font-size: 0.9rem;
-      color: #99c1cc;
-      margin-top: 1.5rem;
-    }
-
-    a {
-      display: inline-block;
+    .share {
       margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      color: #0c0e12;
+    }
+    .share-btn {
       background-color: #00ffe7;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    a:hover {
-      background-color: #6acaff;
       color: #0c0e12;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>SYNTHVIBE</h1>
-    <h2>신스 바이브 | 진동의 패턴</h2>
-    <p>너는 리듬 위에 존재한다.</p>
-    <p>빛, 소리, 전자 신호, 모든 것이 진동한다.</p>
-    <p>세계는 곧 신스.</p>
-    <p>그 모든 파장은 너와 공명하고 있다.</p>
-    <p>당신은 '패턴'을 감지하고, 곧 그것을 '진동'시킨다.</p>
-    <a href="index.html">홈으로 돌아가기</a>
-    <div class="tag">NEUROFO 감각 해킹 시스템</div>
-  </div>
-</body>
-</html>
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      border-radius: 6px;
+      text-decoration
