@@ -1,102 +1,79 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INTUNE | 감각 카드</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEUROFO 카드 - INTUNE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Keyboard';
-      src: url('Keyboard.ttf') format('truetype');
-    }
-    @font-face {
-      font-family: 'RobotoMono';
-      src: url('RobotoMono-Thin.ttf') format('truetype');
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(145deg, #0c0e12, #1b1d22);
       font-family: 'Share Tech Mono', monospace;
-      color: #ffffff;
+      background: url('bg/intune.jpg') center/cover no-repeat;
+      background-color: #0c0e12;
+      color: #d6faff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
     }
-
-    .container {
-      background: rgba(0, 0, 0, 0.5);
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
       border: 1px solid #00ffe7;
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.25), 0 0 20px rgba(130, 110, 255, 0.3);
       max-width: 600px;
-      backdrop-filter: blur(6px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: floatCard 3s ease-in-out infinite;
     }
-
     h1 {
       font-size: 2.5rem;
-      color: #00ffe7;
       margin-bottom: 1rem;
-      text-shadow: 0 0 12px #00ffe7;
-      font-family: 'Keyboard', monospace;
+      color: #00ffe7;
     }
-
-    h2 {
-      font-size: 1.2rem;
-      color: #83e9f0;
-      margin-top: 0;
-      margin-bottom: 2rem;
-    }
-
     p {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: #e0f8ff;
-      margin-bottom: 1rem;
-      font-family: 'RobotoMono', monospace;
     }
-
-    .tag {
-      font-size: 0.9rem;
-      color: #99c1cc;
-      margin-top: 1.5rem;
-    }
-
-    a {
-      display: inline-block;
+    .share {
       margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      color: #0c0e12;
+    }
+    .share-btn {
       background-color: #00ffe7;
+      color: #0c0e12;
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      border-radius: 6px;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
       transition: all 0.3s ease;
+      display: inline-block;
     }
-
-    a:hover {
+    .share-btn:hover {
       background-color: #6acaff;
-      color: #0c0e12;
+    }
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="card">
     <h1>INTUNE</h1>
-    <h2>감각 정렬 | 초점 재설정</h2>
-    <p>당신은 소리의 진동에 민감한 자.</p>
-    <p>빛의 리듬과, 전자음 속도에, 마음의 파형을 일치시킨다.</p>
-    <p>세상은 노이즈다.</p>
-    <p>그 안에서 당신은 의미의 주파수를 찾아낸다.</p>
-    <p>당신은 '허밍'을 수신하고, 곧 그것을 '선율'로 바꾼다.</p>
-    <a href="index.html">홈으로 돌아가기</a>
-    <div class="tag">NEUROFO 감각 해킹 시스템</div>
+    <p>너는 직관과 방향성의 공명을 읽는 감각 보유자. <br>
+    공간의 흔들림, 사람들의 무의식적인 흐름, <br>
+    모든 것은 너의 감각 위에서 정렬된다. <br>
+    잊지 마, 당신의 감각은 지금도 방향을 알고 있다.</p>
+    <div class="share">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=나는 INTUNE 감각 카드 결과를 얻었다!&url=https://neurofo.netlify.app">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://neurofo.netlify.app">Facebook</a>
+      <a class="share-btn" href="https://www.instagram.com/">Instagram</a>
+    </div>
   </div>
 </body>
 </html>
