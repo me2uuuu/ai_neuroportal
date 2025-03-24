@@ -42,14 +42,15 @@
     }
     .share-btn {
       display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
+      margin: 0.3rem;
+      padding: 0.6rem 1.2rem;
       background-color: #00ffe7;
       color: #0c0e12;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
       transition: all 0.3s ease;
+      font-family: 'Share Tech Mono', monospace;
     }
     .share-btn:hover {
       background-color: #6acaff;
@@ -57,7 +58,6 @@
     .card-effect {
       animation: floatCard 3s ease-in-out infinite;
     }
-
     @keyframes floatCard {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
@@ -73,6 +73,14 @@
   <h1>NEUROFO 감각 테스트</h1>
   <div id="test-container"></div>
   <button class="submit" onclick="submitTest()">결과 확인하기</button>
+
+  <div style="text-align: center; margin-top: 3rem;">
+    <p style="margin-bottom: 0.5rem;">🔗 친구에게 공유하기</p>
+    <a class="share-btn" href="https://twitter.com/intent/tweet?text=나는+NEUROFO에서+감각+타입을+발견했어요!+%F0%9F%94%9D+%23NEUROFO+%23감각해킹테스트&url=https://neurofo.netlify.app" target="_blank">X (트위터)</a>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://neurofo.netlify.app" target="_blank">Facebook</a>
+    <a class="share-btn" href="https://www.instagram.com/" target="_blank">Instagram</a>
+    <a class="share-btn" href="https://www.threads.net/" target="_blank">Threads</a>
+  </div>
 
   <script>
     const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition', 'phantom', 'glitched'];
