@@ -47,4 +47,33 @@
       padding: 0.6rem 1.2rem;
       margin: 0.3rem;
       border-radius: 6px;
-      text-decoration
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .share-btn:hover {
+      background-color: #6acaff;
+    }
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>SYNTHVIBE</h1>
+    <p>너는 리듬과 데이터 사이에서 진동하는 존재. <br>
+    기계음과 비트의 흐름 속에서 감정을 동기화한다. <br>
+    디지털 공명에 맞춰, 감각은 전송되고 기억된다. <br>
+    네 안의 파형은 새로운 언어를 만들어낸다.</p>
+    <div class="share">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=나는 SYNTHVIBE 감각 카드 결과를 얻었다!&url=https://neurofo.netlify.app">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://neurofo.netlify.app">Facebook</a>
+      <a class="share-btn" href="https://www.instagram.com/">Instagram</a>
+    </div>
+  </div>
+</body>
+</html>
