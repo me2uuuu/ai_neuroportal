@@ -66,7 +66,9 @@
   </style>
 </head>
 <body>
-  <audio id="bgm" autoplay loop>
+
+  <!-- 배경 음악 -->
+  <audio id="bgm" loop>
     <source src="final_mystic_neon_bgm_v2_2.mp3" type="audio/mpeg">
   </audio>
 
@@ -82,6 +84,7 @@
     <a class="share-btn" href="https://www.threads.net/" target="_blank">Threads</a>
   </div>
 
+  <!-- 스크립트 -->
   <script>
     const senses = ['intune', 'sounddrifter', 'tactile', 'visualizer', 'synthvibe', 'sensehacker', 'intuition', 'phantom', 'glitched'];
     const scores = {};
@@ -157,20 +160,20 @@
         phantom: 'audiophantom.html',
         glitched: 'glitched.html'
       };
-
       const resultPage = mapping[topSense] || 'intune.html';
       window.location.href = resultPage;
     }
-    <script>
-  document.addEventListener('click', () => {
-    const bgm = document.getElementById('bgm');
-    if (bgm.paused) {
-      bgm.play().catch(e => {
-        console.log("iOS 자동 재생 제한:", e);
-      });
-    }
-  }, { once: true });
-</script>
+
+    // iOS 대응: 사용자 첫 클릭 시 음악 재생
+    document.addEventListener('click', () => {
+      const bgm = document.getElementById('bgm');
+      if (bgm.paused) {
+        bgm.play().catch(e => {
+          console.log("iOS 자동 재생 제한:", e);
+        });
+      }
+    }, { once: true });
   </script>
+
 </body>
-</html> 
+</html>
