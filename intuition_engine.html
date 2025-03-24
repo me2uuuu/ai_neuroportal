@@ -1,92 +1,79 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>INTUITION ENGINE | 감각 카드</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEUROFO 카드 - INTUITION_ENGINE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(145deg, #0c0e12, #1b1d22);
       font-family: 'Share Tech Mono', monospace;
-      color: #ffffff;
+      background: url('bg/intuition.jpg') center/cover no-repeat;
+      background-color: #0c0e12;
+      color: #d6faff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
     }
-
-    .container {
-      background: rgba(0, 0, 0, 0.5);
+    .card {
+      background-color: rgba(0, 0, 0, 0.5);
       border: 1px solid #00ffe7;
-      padding: 3rem;
+      padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 0 40px rgba(0, 255, 255, 0.25), 0 0 20px rgba(130, 110, 255, 0.3);
       max-width: 600px;
-      backdrop-filter: blur(6px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: floatCard 3s ease-in-out infinite;
     }
-
     h1 {
       font-size: 2.5rem;
-      color: #00ffe7;
       margin-bottom: 1rem;
-      text-shadow: 0 0 12px #00ffe7;
+      color: #00ffe7;
     }
-
-    h2 {
-      font-size: 1.2rem;
-      color: #83e9f0;
-      margin-top: 0;
-      margin-bottom: 2rem;
-    }
-
     p {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: #e0f8ff;
-      margin-bottom: 1rem;
     }
-
-    .tag {
-      font-size: 0.9rem;
-      color: #99c1cc;
-      margin-top: 1.5rem;
-    }
-
-    a {
-      display: inline-block;
+    .share {
       margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      color: #0c0e12;
+    }
+    .share-btn {
       background-color: #00ffe7;
+      color: #0c0e12;
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      border-radius: 6px;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
       transition: all 0.3s ease;
+      display: inline-block;
     }
-
-    a:hover {
+    .share-btn:hover {
       background-color: #6acaff;
-      color: #0c0e12;
+    }
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>INTUITION ENGINE</h1>
-    <h2>직관의 엔진 | 예측의 힘</h2>
-    <p>너는 미래를 읽는 능력을 가진 존재.</p>
-    <p>보이지 않는 정보를 예측하고, 숨겨진 패턴을 드러낸다.</p>
-    <p>직관은 너의 엔진이고, 감각은 그 속에서 소리친다.</p>
-    <p>너는 모든 데이터가 예측 가능한 질서 속에 존재한다는 것을 안다.</p>
-    <p>세상은 널 위해 미리 설정된 트랙 위를 달린다.</p>
-    <a href="index.html">홈으로 돌아가기</a>
-    <div class="tag">NEUROFO 감각 해킹 시스템</div>
+  <div class="card">
+    <h1>INTUITION_ENGINE</h1>
+    <p>너는 직관으로 작동하는 엔진.<br>
+    논리를 뛰어넘어, 감각의 틈에서 결정을 내리는 자.<br>
+    예측이 아닌 감지, 계획이 아닌 흐름.<br>
+    너는 ‘느낌’을 데이터로 전환할 수 있다.</p>
+    <div class="share">
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=나는 INTUITION_ENGINE 감각 카드 결과를 얻었다!&url=https://neurofo.netlify.app">Twitter</a>
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://neurofo.netlify.app">Facebook</a>
+      <a class="share-btn" href="https://www.instagram.com/">Instagram</a>
+    </div>
   </div>
 </body>
 </html>
