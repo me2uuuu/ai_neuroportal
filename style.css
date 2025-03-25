@@ -1,88 +1,132 @@
-/* ===================== */
-/* 🎬 Hero Section (인트로 페이지) */
-/* ===================== */
-body {
-  margin: 0;
-  font-family: 'Share Tech Mono', monospace;
-  background-color: #0c0e12;
-  color: #d6faff;
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEUROFO | 감각 해킹 테스트</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
+    /* ===================== */
+    /* 🎬 Hero Section (인트로 페이지) */
+    /* ===================== */
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #0c0e12;
+      color: #d6faff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px #00ffe7;
-}
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+    }
 
-.hero p {
-  font-size: 1.25rem;
-  max-width: 600px;
-  text-shadow: 0 0 5px #00c2ff;
-}
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #00ffe7;
+    }
 
-.start-btn {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  font-size: 1.25rem;
-  background-color: transparent;
-  border: 2px solid #00fff0;
-  color: #00fff0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      text-shadow: 0 0 5px #00c2ff;
+    }
 
-.start-btn:hover {
-  background-color: #00fff0;
-  color: #0c0e12;
-}
+    .start-btn {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      background-color: transparent;
+      border: 2px solid #00fff0;
+      color: #00fff0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
+    .start-btn:hover {
+      background-color: #00fff0;
+      color: #0c0e12;
+    }
 
-/* ===================== */
-/* 🃏 Card Section (결과 카드 스타일) */
-/* ===================== */
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    /* ===================== */
+    /* 🎬 Portal Background (포탈 배경) */
+    /* ===================== */
+    video {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.card {
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  overflow: hidden;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
+    /* ===================== */
+    /* 🃏 Card Section (결과 카드 스타일) */
+    /* ===================== */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 3rem;
+    }
 
-.card-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
+    .card {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
 
-.card-content {
-  padding: 20px;
-}
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
-.card-title {
-  font-size: 24px;
-  color: #00ffe7;
-  font-weight: bold;
-}
+    .card-content {
+      padding: 20px;
+    }
 
-.card-description {
-  font-size: 16px;
-  color: #ccc;
-  margin-top: 10px;
-}
+    .card-title {
+      font-size: 24px;
+      color: #00ffe7;
+      font-weight: bold;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: #ccc;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>NEUROFO</h1>
+    <p>감각 해킹 시스템 접속 중...<br /> 당신의 감각은 어디로 연결되어 있습니까?</p>
+    <button class="start-btn" onclick="location.href='test.html'">감각 테스트 시작하기</button>
+  </div>
+
+  <!-- Portal Video -->
+  <video autoplay loop muted playsinline id="portal-bg">
+    <source src="portal_bg.mp4" type="video/mp4">
+  </video>
+
+</body>
+</html>
