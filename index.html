@@ -7,8 +7,13 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Share Tech Mono', monospace;
       background-color: #0c0e12;
       color: #d6faff;
@@ -16,38 +21,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      padding: 20px;
+      overflow: hidden;
+      position: relative;
     }
 
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      position: relative;
-      z-index: 1;
-      padding: 2rem;
+      padding: 1rem;
+      z-index: 2;
     }
 
     .hero h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       text-shadow: 0 0 10px #00ffe7;
     }
 
     .hero p {
       font-size: 1rem;
-      line-height: 1.5;
-      max-width: 90%;
+      line-height: 1.6;
+      max-width: 80vw;
+      margin: 0 auto;
       text-shadow: 0 0 5px #00c2ff;
     }
 
     .start-btn {
       margin-top: 2rem;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
       background-color: transparent;
       border: 2px solid #00fff0;
       color: #00fff0;
@@ -60,46 +61,26 @@
       color: #0c0e12;
     }
 
-    video {
+    video#portal-bg {
       position: absolute;
-      z-index: -1;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    /* 반응형 조정 */
-    @media screen and (max-width: 500px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero p {
-        font-size: 0.9rem;
-      }
-
-      .start-btn {
-        font-size: 1rem;
-        padding: 0.8rem 1.6rem;
-      }
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
   <div class="hero">
     <h1>NEUROFO</h1>
-    <p>
-      감각 해킹 시스템 접속 중...<br />
-      당신의 감각은 어디로 연결되어 있습니까?<br />
-      <strong>이상한 느낌 발생 중...</strong>
-    </p>
+    <p>감각 해킹 시스템 접속 중...<br />이상한 느낌 발생 중...</p>
     <button class="start-btn" onclick="location.href='test.html'">감각 테스트 시작하기</button>
   </div>
 
-  <!-- Portal Video -->
   <video autoplay loop muted playsinline id="portal-bg">
-    <source src="portal_bg.mp4" type="video/mp4" />
+    <source src="portal_bg.mp4" type="video/mp4">
   </video>
 </body>
 </html>
